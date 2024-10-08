@@ -1,0 +1,14 @@
+8. DB2 Configuration and Notes
+Ensure that the DB2 server is running on the given localhost:50000 with the correct credentials (username and password).
+You can replace mydb with the actual database name, and update the username and password accordingly.
+Make sure the db2jcc4.jar (DB2 JDBC Driver) is available in your Maven repository, or manually download and add it to your local Maven setup.
+
+How It Works:
+The /batch/start endpoint triggers the Spring Batch job.
+The batch job reads from in-memory items (SampleData), processes them (logging), and writes (logging).
+Job metadata (such as job execution status) is stored in the DB2 database, thanks to Spring Batch using the JobRepository backed by DB2.
+How to Run:
+Ensure DB2 is up and running and accessible with the connection details you provide in the application.properties.
+Run the Spring Boot application.
+Access http://localhost:8080/batch/start to trigger the batch job.
+This setup can be customized further based on more complex business logic, or extended with additional steps such as reading/writing to DB2 within the batch processing itself.
